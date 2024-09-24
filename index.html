@@ -10,8 +10,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       height: 100vh;
       background-color: #f0f0f0;
+      margin: 0;
     }
     .container {
       text-align: center;
@@ -32,13 +34,28 @@
     a:hover {
       background-color: #0056b3;
     }
+    df-messenger {
+      --df-messenger-bot-message: #e0e0e0;
+      --df-messenger-button-titlebar-color: #007BFF;
+      --df-messenger-chat-background-color: #fafafa;
+      --df-messenger-font-color: #000000;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Bem-vindo ao Meu Chatbot!</h1>
-    <p>Interaja com o chatbot clicando no botão abaixo.</p>
-    <a href="https://t.me/seubottelegram" target="_blank">Abrir o Chatbot no Telegram</a>
+    <p>Interaja com o chatbot clicando no botão ou na janela de chat abaixo.</p>
   </div>
+
+  <!-- Script do Dialogflow Messenger -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    chat-icon="https://lh3.googleusercontent.com/pw/AP1GczOeS5OeUnypdD_btGOhf5DiEI3DCtSoM-O4K60bI_MoXt10tts58ofCl21Y6x4z6UxDk0F9iOqW46BdbLdFN7ReOQf2KxH4cMjyF_NIQt11f-qklrLb0oPiFT8fJd71wfnzANa2z499s0BHuPmSXdY=w240-h240-s-no-gm?authuser=0"
+    intent="WELCOME"
+    chat-title="BookBot"
+    agent-id="cfab0096-4c78-476b-8778-a8d998e99664"
+    language-code="pt-br"
+  ></df-messenger>
 </body>
 </html>
