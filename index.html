@@ -17,10 +17,13 @@
     }
     .container {
       text-align: center;
-      background: #fff;
+      background: url('sua-imagem-de-fundo.jpg') no-repeat center center;
+      background-size: cover;
       padding: 50px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%; /* Ajuste conforme necessário */
+      height: 100%; /* Ajuste conforme necessário */
     }
     a {
       display: inline-block;
@@ -44,8 +47,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bem-vindo ao Meu Chatbot!</h1>
-    <p>Interaja com o chatbot clicando no botão ou na janela de chat abaixo.</p>
+    <!-- Imagem de fundo em vez de texto -->
   </div>
 
   <!-- Script do Dialogflow Messenger -->
