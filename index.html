@@ -26,6 +26,24 @@
       border-radius: 0;
       box-shadow: none;
     }
+    .input-box-wrapper {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .input-box-wrapper input {
+      padding: 10px;
+      border: 1px solid #007BFF;
+      border-radius: 5px;
+      flex-grow: 1; /* Para que o input ocupe o espaço disponível */
+    }
+    .input-box-wrapper svg {
+      cursor: pointer;
+      margin-left: 5px;
+      fill: #007BFF;
+      width: 24px;
+      height: 24px;
+    }
     a {
       display: inline-block;
       padding: 10px 20px;
@@ -76,6 +94,15 @@
     <div class="welcome-balloon" id="welcomeBalloon">
       Olá! Bem-vindo ao meu chatbot. Como posso te ajudar?
     </div>
+    
+    <!-- Campo de entrada personalizado -->
+    <div class="input-box-wrapper">
+      <input type="text" placeholder="Pergunte algo…">
+      <svg xmlns="http://www.w3.org/2000/svg" id="sendIcon" onclick="sendMessage()">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+        <path d="M0 0h24v24H0z" fill="none"></path>
+      </svg>
+    </div>
   </div>
 
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
@@ -95,15 +122,18 @@
       setTimeout(() => {
         welcomeBalloon.style.display = 'none';
       }, 6000);
-      
-      // Modificar o placeholder
-      setTimeout(() => {
-        const inputField = document.querySelector('df-messenger').shadowRoot.querySelector('input');
-        if (inputField) {
-          inputField.placeholder = ''; // Altere para o texto desejado
-        }
-      }, 2000); // Ajuste o tempo se necessário
     });
+
+    function sendMessage() {
+      const inputField = document.querySelector('.input-box-wrapper input');
+      const message = inputField.value;
+      if (message) {
+        // Envie a mensagem para o Dialogflow aqui
+        // Você pode implementar a lógica para enviar a mensagem ao chatbot
+        console.log("Mensagem enviada:", message); // Para fins de depuração
+        inputField.value = ''; // Limpa o campo após enviar
+      }
+    }
   </script>
 
 </body>
