@@ -83,28 +83,15 @@
 
   <!-- Script do Dialogflow Messenger -->
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  <df-messenger
-    chat-icon="https://lh3.googleusercontent.com/pw/AP1GczNW7czZyFdxYfxXWu0ni0JQmObfweEoW6Uvn_-mFpRl2sddNhWCSYDn9hJhrPkS2AymiTTLRf-odtAl6nyx99KMldvD-kARLtSQgkD4YuDsS3X9ElqKxeKZDzLAzJL6h9hGRd-uAKAjIYl06Nq7BRc=w360-h360-s-no-gm?authuser=0"
-    chat-title="BookBot"
-    agent-id="cfab0096-4c78-476b-8778-a8d998e99664"
-    language-code="pt-br"
-  ></df-messenger>
+<df-messenger
+  chat-icon="https:&#x2F;&#x2F;lh3.googleusercontent.com&#x2F;pw&#x2F;AP1GczP10VXGt48itvpE7U2Y0RlrZh3ScFNaBhM6zJmEvCzAuq-0kM-h1bq7vO57Lo60H31vT2Ohzlt4XwlrAWHNnnT5zRnJp4V-gKux9ajjbreSE0WIUNo6TEKHxWWkv40Ufrr8CQc1pw57PH-RyfdNNeE=w360-h360-s-no-gm?authuser=0"
+  intent="WELCOME"
+  chat-title="BookBot"
+  agent-id="cfab0096-4c78-476b-8778-a8d998e99664"
+  language-code="pt-br"
+></df-messenger>
 
-  <!-- Script para exibir e ocultar o balão de boas-vindas -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const welcomeBalloon = document.getElementById('welcomeBalloon');
-      // Mostrar o balão após 1 segundo
-      setTimeout(() => {
-        welcomeBalloon.style.display = 'block';
-      }, 1000);
-
-      // Esconder o balão após 5 segundos
-      setTimeout(() => {
-        welcomeBalloon.style.display = 'none';
-      }, 6000);
-    });
-  </script>
+  
 
 </body>
 </html>
