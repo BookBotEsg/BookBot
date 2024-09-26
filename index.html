@@ -43,12 +43,13 @@
       --df-messenger-button-titlebar-color: #007BFF;
       --df-messenger-chat-background-color: #fafafa;
       --df-messenger-font-color: #000000;
+      --df-messenger-send-icon: #007BFF;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- A imagem de fundo será usada aqui -->
+    <!-- Conteúdo adicional pode ser adicionado aqui, se necessário -->
   </div>
 
   <!-- Script do Dialogflow Messenger -->
@@ -58,6 +59,7 @@
     chat-title="BookBot"
     agent-id="cfab0096-4c78-476b-8778-a8d998e99664"
     language-code="pt-br"
+    intent="WELCOME" <!-- Aciona a intenção de boas-vindas -->
   ></df-messenger>
 </body>
 </html>
