@@ -81,6 +81,14 @@
     </div>
   </div>
 
+  <div class="input-box-wrapper">
+      <input type="text" placeholder="Digite sua mensagem...">
+      <svg xmlns="http://www.w3.org/2000/svg" id="sendIcon">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+        <path d="M0 0h24v24H0z" fill="none"></path>
+      </svg>
+    </div>
+
   <!-- Script do Dialogflow Messenger -->
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
   <df-messenger
@@ -91,40 +99,19 @@
     placeholder="Digite sua mensagem..."
   ></df-messenger>
 
-  <!-- Script para exibir e ocultar o balão de boas-vindas e mudar placeholder -->
+  <!-- Script para exibir e ocultar o balão de boas-vindas -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Exibir o balão de boas-vindas
       const welcomeBalloon = document.getElementById('welcomeBalloon');
+      // Mostrar o balão após 1 segundo
       setTimeout(() => {
         welcomeBalloon.style.display = 'block';
       }, 1000);
 
-      // Esconder o balão de boas-vindas após 5 segundos
+      // Esconder o balão após 5 segundos
       setTimeout(() => {
         welcomeBalloon.style.display = 'none';
       }, 6000);
-
-      // Alterar o placeholder do df-messenger após o carregamento
-      const changePlaceholder = () => {
-        const dfMessenger = document.querySelector('df-messenger');
-        const inputBox = dfMessenger.shadowRoot.querySelector('df-messenger-chat').shadowRoot.querySelector('input');
-        inputBox.placeholder = "Digite sua mensagem..."; // Altere aqui para o texto desejado
-      };
-
-      // Aguardar o carregamento completo do chatbot e alterar o placeholder
-      const observer = new MutationObserver((mutations, observerInstance) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-            changePlaceholder();
-            observerInstance.disconnect(); // Desconectar o observador após a alteração
-          }
-        });
-      });
-
-      // Observar mudanças no df-messenger
-      const dfMessengerElement = document.querySelector('df-messenger');
-      observer.observe(dfMessengerElement.shadowRoot, { childList: true, subtree: true });
     });
   </script>
 
