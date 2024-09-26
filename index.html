@@ -18,31 +18,13 @@
     .container {
       text-align: center;
       background: url('https://raw.githubusercontent.com/BookBotEsg/BookBot/main/FUNDO.jpg') no-repeat center center;
-      background-size: cover;
-      width: 100vw;
-      height: 100vh;
-      padding: 0;
-      margin: 0;
-      border-radius: 0;
-      box-shadow: none;
-    }
-    .input-box-wrapper {
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
-    }
-    .input-box-wrapper input {
-      padding: 10px;
-      border: 1px solid #007BFF;
-      border-radius: 5px;
-      flex-grow: 1; /* Para que o input ocupe o espaço disponível */
-    }
-    .input-box-wrapper svg {
-      cursor: pointer;
-      margin-left: 5px;
-      fill: #007BFF;
-      width: 24px;
-      height: 24px;
+      background-size: cover; /* Preenche toda a área */
+      width: 100vw; /* 100% da largura da viewport */
+      height: 100vh; /* 100% da altura da viewport */
+      padding: 0; /* Removendo padding */
+      margin: 0; /* Removendo margens */
+      border-radius: 0; /* Removendo bordas arredondadas */
+      box-shadow: none; /* Removendo sombra */
     }
     a {
       display: inline-block;
@@ -64,25 +46,27 @@
       --df-messenger-send-icon: #007BFF;
     }
 
+    /* Estilo do balão de boas-vindas */
     .welcome-balloon {
       position: absolute;
-      bottom: 90px;
-      right: 30px;
+      bottom: 90px; /* Ajuste para a posição desejada */
+      right: 30px; /* Ajuste para a posição desejada */
       background-color: #007BFF;
       color: #fff;
       padding: 15px 20px;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       font-size: 14px;
-      display: none;
+      display: none; /* Inicialmente escondido */
       max-width: 300px;
     }
 
+    /* Setinha do balão */
     .welcome-balloon::after {
       content: '';
       position: absolute;
       bottom: -10px;
-      right: 20px;
+      right: 20px; /* Posição da setinha */
       border-width: 10px;
       border-style: solid;
       border-color: #007BFF transparent transparent transparent;
@@ -90,8 +74,14 @@
   </style>
 </head>
 <body>
-  
+  <div class="container">
+    <!-- Balão de boas-vindas -->
+    <div class="welcome-balloon" id="welcomeBalloon">
+      Olá! Bem-vindo ao meu chatbot. Como posso te ajudar?
+    </div>
+  </div>
 
+  <!-- Script do Dialogflow Messenger -->
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
   <df-messenger
     chat-icon="https://lh3.googleusercontent.com/pw/AP1GczNW7czZyFdxYfxXWu0ni0JQmObfweEoW6Uvn_-mFpRl2sddNhWCSYDn9hJhrPkS2AymiTTLRf-odtAl6nyx99KMldvD-kARLtSQgkD4YuDsS3X9ElqKxeKZDzLAzJL6h9hGRd-uAKAjIYl06Nq7BRc=w360-h360-s-no-gm?authuser=0"
@@ -100,44 +90,21 @@
     language-code="pt-br"
   ></df-messenger>
 
+  <!-- Script para exibir e ocultar o balão de boas-vindas -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const welcomeBalloon = document.getElementById('welcomeBalloon');
+      // Mostrar o balão após 1 segundo
       setTimeout(() => {
         welcomeBalloon.style.display = 'block';
       }, 1000);
+
+      // Esconder o balão após 5 segundos
       setTimeout(() => {
         welcomeBalloon.style.display = 'none';
       }, 6000);
     });
-
-    function sendMessage() {
-      const inputField = document.querySelector('.input-box-wrapper input');
-      const message = inputField.value;
-      if (message) {
-        // Envie a mensagem para o Dialogflow aqui
-        // Você pode implementar a lógica para enviar a mensagem ao chatbot
-        console.log("Mensagem enviada:", message); // Para fins de depuração
-        inputField.value = ''; // Limpa o campo após enviar
-      }
-    }
   </script>
 
 </body>
-
-  <div class="container">
-    <div class="welcome-balloon" id="welcomeBalloon">
-      Olá! Bem-vindo ao meu chatbot. Como posso te ajudar?
-    </div>
-    
-    <!-- Campo de entrada personalizado -->
-    <div class="input-box-wrapper">
-      <input type="text" placeholder="Pergunte algo…">
-      <svg xmlns="http://www.w3.org/2000/svg" id="sendIcon" onclick="sendMessage()">
-        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-        <path d="M0 0h24v24H0z" fill="none"></path>
-      </svg>
-    </div>
-  </div>
-  
 </html>
