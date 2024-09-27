@@ -45,28 +45,64 @@
       --df-messenger-font-color: #000000;
       --df-messenger-send-icon: #007BFF;
     }
+
+    /* Estilo do balão de boas-vindas */
+    .welcome-balloon {
+      position: absolute;
+      bottom: 90px; /* Ajuste para a posição desejada */
+      right: 30px; /* Ajuste para a posição desejada */
+      background-color: #007BFF;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      display: none; /* Inicialmente escondido */
+      max-width: 300px;
+    }
+
+    /* Setinha do balão */
+    .welcome-balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 20px; /* Posição da setinha */
+      border-width: 10px;
+      border-style: solid;
+      border-color: #007BFF transparent transparent transparent;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Conteúdo adicional pode ser adicionado aqui, se necessário -->
+    <!-- Balão de boas-vindas -->
+    <div class="welcome-balloon" id="welcomeBalloon">
+      Olá! Bem-vindo ao meu chatbot. Como posso te ajudar?
+    </div>
   </div>
 
   <!-- Script do Dialogflow Messenger -->
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-<df-messenger
-  chat-icon="https:&#x2F;&#x2F;lh3.googleusercontent.com&#x2F;pw&#x2F;AP1GczP10VXGt48itvpE7U2Y0RlrZh3ScFNaBhM6zJmEvCzAuq-0kM-h1bq7vO57Lo60H31vT2Ohzlt4XwlrAWHNnnT5zRnJp4V-gKux9ajjbreSE0WIUNo6TEKHxWWkv40Ufrr8CQc1pw57PH-RyfdNNeE=w360-h360-s-no-gm?authuser=0"
-  intent="WELCOME"
-  chat-title="BookBot"
-  agent-id="cfab0096-4c78-476b-8778-a8d998e99664"
-  language-code="pt-br"
-></df-messenger>
+  <df-messenger
+    chat-icon="https://lh3.googleusercontent.com/pw/AP1GczNW7czZyFdxYfxXWu0ni0JQmObfweEoW6Uvn_-mFpRl2sddNhWCSYDn9hJhrPkS2AymiTTLRf-odtAl6nyx99KMldvD-kARLtSQgkD4YuDsS3X9ElqKxeKZDzLAzJL6h9hGRd-uAKAjIYl06Nq7BRc=w360-h360-s-no-gm?authuser=0"
+    chat-title="BookBot"
+    agent-id="cfab0096-4c78-476b-8778-a8d998e99664"
+    language-code="pt-br"
+  ></df-messenger>
 
-  <!-- Script para enviar a mensagem de boas-vindas -->
+  <!-- Script para exibir e ocultar o balão de boas-vindas -->
   <script>
-    window.addEventListener('dfMessengerLoaded', function () {
-      const dfMessenger = document.querySelector('df-messenger');
-      dfMessenger.renderCustomText('Olá! Bem-vindo ao nosso chatbot! Como posso ajudar você hoje?');
+    document.addEventListener('DOMContentLoaded', function() {
+      const welcomeBalloon = document.getElementById('welcomeBalloon');
+      // Mostrar o balão após 1 segundo
+      setTimeout(() => {
+        welcomeBalloon.style.display = 'block';
+      }, 1000);
+
+      // Esconder o balão após 5 segundos
+      setTimeout(() => {
+        welcomeBalloon.style.display = 'none';
+      }, 6000);
     });
   </script>
 
