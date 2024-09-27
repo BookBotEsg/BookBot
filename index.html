@@ -45,40 +45,11 @@
       --df-messenger-font-color: #000000;
       --df-messenger-send-icon: #007BFF;
     }
-
-    /* Estilo do balão de boas-vindas */
-    .welcome-balloon {
-      position: absolute;
-      bottom: 90px; /* Ajuste para a posição desejada */
-      right: 30px; /* Ajuste para a posição desejada */
-      background-color: #007BFF;
-      color: #fff;
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      font-size: 14px;
-      display: none; /* Inicialmente escondido */
-      max-width: 300px;
-    }
-
-    /* Setinha do balão */
-    .welcome-balloon::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      right: 20px; /* Posição da setinha */
-      border-width: 10px;
-      border-style: solid;
-      border-color: #007BFF transparent transparent transparent;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Balão de boas-vindas -->
-    <div class="welcome-balloon" id="welcomeBalloon">
-      Olá! Bem-vindo ao meu chatbot. Como posso te ajudar?
-    </div>
+    <!-- Conteúdo adicional pode ser adicionado aqui, se necessário -->
   </div>
 
   <!-- Script do Dialogflow Messenger -->
@@ -90,19 +61,11 @@
     language-code="pt-br"
   ></df-messenger>
 
-  <!-- Script para exibir e ocultar o balão de boas-vindas -->
+  <!-- Script para enviar a mensagem de boas-vindas -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const welcomeBalloon = document.getElementById('welcomeBalloon');
-      // Mostrar o balão após 1 segundo
-      setTimeout(() => {
-        welcomeBalloon.style.display = 'block';
-      }, 1000);
-
-      // Esconder o balão após 5 segundos
-      setTimeout(() => {
-        welcomeBalloon.style.display = 'none';
-      }, 6000);
+    window.addEventListener('dfMessengerLoaded', function () {
+      const dfMessenger = document.querySelector('df-messenger');
+      dfMessenger.renderCustomText('Olá! Bem-vindo ao nosso chatbot! Como posso ajudar você hoje?');
     });
   </script>
 
